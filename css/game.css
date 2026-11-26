@@ -1,0 +1,22 @@
+#game-container{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1000;background:#1a1e2a;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-action:none}
+#game-container canvas{display:block}
+#turn-indicator{position:absolute;top:20px;right:20px;background:rgba(0,0,0,.75);color:#ffdd99;padding:12px 20px;border-radius:40px;font-weight:bold;font-size:18px;backdrop-filter:blur(8px);pointer-events:none;z-index:10;border-right:3px solid #ffaa66}
+#dogs-count{position:absolute;top:20px;left:20px;background:rgba(0,0,0,.6);color:#ddbb88;padding:8px 16px;border-radius:30px;font-weight:bold;font-size:16px;backdrop-filter:blur(5px);pointer-events:none;z-index:10}
+#capture-count{position:absolute;bottom:20px;left:20px;background:rgba(0,0,0,.6);color:#ffaa66;padding:8px 16px;border-radius:30px;font-weight:bold;font-size:16px;backdrop-filter:blur(5px);pointer-events:none;z-index:10}
+#voltar-btn{position:absolute;bottom:20px;right:20px;background:#d4a373;color:#2a2418;border:none;border-radius:20px;padding:12px 20px;font-weight:bold;cursor:pointer;z-index:20;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+#voltar-btn:hover{background:#ffdd99}
+.move-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.8);color:#ffcc88;padding:8px 16px;border-radius:30px;font-size:16px;pointer-events:none;z-index:20;white-space:nowrap;animation:fadeOut 1.5s forwards;font-weight:bold}
+@keyframes fadeOut{0%,60%{opacity:1}100%{opacity:0}}
+#confirm-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:1000;align-items:center;justify-content:center}
+#confirm-modal.visible{display:flex}
+#confirm-modal .modal-box{background:#f8efe3;padding:2rem 2.5rem;border-radius:24px;max-width:420px;width:90%;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+#confirm-modal .modal-box p{font-size:1.3rem;color:#3d2a1e;margin-bottom:1.8rem;font-weight:600}
+#confirm-modal .btn-group{display:flex;gap:1.2rem;justify-content:center}
+#confirm-modal .btn-group button{padding:.6rem 2rem;border:none;border-radius:40px;font-weight:bold;font-size:1.1rem;cursor:pointer}
+.btn-sim{background:#d4a373;color:#2a2418}.btn-sim:hover{background:#b6885a}
+.btn-nao{background:#8a6a4a;color:#f8efe3}.btn-nao:hover{background:#6a4a2a}
+@media(max-width:600px){
+  #turn-indicator,#dogs-count,#capture-count{font-size:14px;padding:6px 12px}
+  #voltar-btn{padding:8px 16px;font-size:14px}
+  .move-hint{font-size:14px;white-space:normal;text-align:center;width:80%}
+}
