@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADUGO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/menu.css" />
+  <link rel="stylesheet" href="css/game.css" />
+  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.128.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.128.0/examples/jsm/"}}</script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <div class="menu-wrapper" id="menuWrapper">
+    <h1 class="game-title">ADUGO</h1>
+    <div class="menu-buttons">
+      <select id="nivel" class="menu-btn">
+        <option value="facil">IA: Fácil</option>
+        <option value="medio" selected>IA: Média</option>
+        <option value="dificil">IA: Difícil</option>
+      </select>
+      <div id="netStatus"></div>
+      <button class="menu-btn" id="btnCpuOnca">Jogar de Onça (vs CPU)</button>
+      <button class="menu-btn" id="btnCpuDog">Jogar de Cachorros (vs CPU)</button>
+      <button class="menu-btn" id="btnPvp">PvP (2 jogadores)</button>
+      <button class="menu-btn" id="btnFila">Jogar Online (fila)</button>
+      <button class="menu-btn" id="btnHost">Criar Sala (Online)</button>
+      <button class="menu-btn" id="btnJoin">Entrar em Sala</button>
+      <button class="menu-btn" id="howtoBtn">Como Jogar</button>
+    </div>
+
+    <div id="rulesOverlay" class="rules-overlay">
+      <button class="close-rules" id="closeRulesBtn">✕</button>
+      <h2>Jogo da Onça — Regras</h2>
+      <p><strong>O que é?</strong> Adugo (onça ou onça-pintada na língua do povo indígena Boe Bororo) é um jogo de tabuleiro tradicional de povos indígenas brasileiros também conhecido como jogo da onça. É disputado por dois jogadores: um controla a <strong>onça</strong> e o outro controla os <strong>cachorros</strong>.</p>
+      <p><strong>Objetivo da onça:</strong> Capturar (comer) cinco cachorros para vencer.</p>
+      <p><strong>Objetivo dos cachorros:</strong> Cercar a onça, deixando-a sem movimento, para vencer.</p>
+      <p><strong>Como se move a onça:</strong> Anda uma casa por vez, seguindo as linhas do tabuleiro. Ela também pode pular sobre um cachorro que esteja ao lado, desde que a casa seguinte esteja vazia — assim ela "captura" o cachorro.</p>
+      <p><strong>Como se movem os cachorros:</strong> Cada cachorro anda uma casa por vez, seguindo as linhas do tabuleiro.</p>
+      <p><strong>Início do jogo:</strong> A onça começa no centro do tabuleiro. Os cachorros ocupam as casas de uma das pontas. Os jogadores alternam turnos, movendo um de seus peões por vez.</p>
+      <p><strong>Dica:</strong> Os cachorros precisam trabalhar em equipe para cercar a onça. A onça deve ser rápida e esperta para capturar os cachorros antes de ser encurralada.</p>
+    </div>
+    <div id="creditsOverlay" class="credits-overlay">
+      <button class="close-credits" id="closeCreditsBtn">✕</button>
+      <h2>Créditos</h2>
+      <p>Professor Guilherme Henrique Santos da Costa e estudantes do Laboratório de Jogos Eletrônicos do CEU EMEF Três Pontes.</p>
+      <p>Contato: guilherme.santos.costa@alumni.usp.br</p>
+      <p>Você também pode contribuir pelo GitHub!</p>
+    </div>
+
+    <div class="pattern-divider"><span class="line"></span><span class="diamond">◆</span><span class="diamond">◆</span><span class="diamond">◆</span><span class="line"></span></div>
+    <div class="menu-footer">
+      <button class="menu-btn" id="creditsBtn">Créditos</button>
+      <button class="menu-btn" data-action="exit">Sair</button>
+    </div>
+  </div>
+
+  <div id="game-container">
+    <div id="turn-indicator">Turno: ONÇA</div>
+    <div id="dogs-count">Cães: <span id="dogs-left">14</span></div>
+    <div id="capture-count">Capturas: <span id="captures">0</span> / 5</div>
+    <button id="voltar-btn">Voltar ao Menu</button>
+    <div id="confirm-modal"><div class="modal-box">
+      <p>Você deseja abandonar a partida?</p>
+      <div class="btn-group"><button class="btn-sim" id="confirm-sim">Sim</button><button class="btn-nao" id="confirm-nao">Não</button></div>
+    </div></div>
+  </div>
+
+  <div id="result-overlay">
+    <div class="winner-text" id="winnerText"></div>
+    <div class="sub-text" id="subText"></div>
+    <div class="timer" id="timerText"></div>
+  </div>
+
+  <div id="volume-control">
+    <button id="volume-toggle" aria-label="Controle de volume">🔊</button>
+    <div id="volume-slider-wrap">
+      <input type="range" id="volume-slider" min="0" max="100" value="80" />
+      <span class="vol-label" id="vol-display">80%</span>
+    </div>
+  </div>
+</body>
+</html>
